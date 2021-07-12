@@ -78,15 +78,16 @@ function mostrarClima(datos) {
 
   // Formatear el Clima...
 
-  const { name, main: { temp, temp_max, temp_min } } = datos;
+  const { name, main: { temp, temp_max, temp_min, feels_like } } = datos;
 
 
   const grados = KelvinACentigrados(temp);
   const min = KelvinACentigrados(temp_max);
   const max = KelvinACentigrados(temp_min);
+  const feelsLike = KelvinACentigrados(feels_like);
 
   const nombreCiudad = document.createElement('p');
-  nombreCiudad.innerHTML = `Clima en: ${name}`;
+  nombreCiudad.innerHTML = `Temperatura Actual en: ${name}`;
   nombreCiudad.classList.add('font-bold', 'text-2xl')
 
   const actual = document.createElement('p');
@@ -102,6 +103,8 @@ function mostrarClima(datos) {
   tempMinima.innerHTML = `Min: ${min} &#8451;`;
   tempMinima.classList.add('text-xl')
 
+  const sensacion = document.createElement('p');
+  sensacion.innerHTML = `Sensación Termica: ${feelsLike} &#8451;`;
 
   const resultadoDiv = document.createElement('div');
   resultadoDiv.classList.add('text-center', 'text-white')
@@ -109,6 +112,7 @@ function mostrarClima(datos) {
   resultadoDiv.appendChild(actual);
   resultadoDiv.appendChild(tempMaxima);
   resultadoDiv.appendChild(tempMinima);
+  resultadoDiv.appendChild(sensacion);
 
   resultado.appendChild(resultadoDiv)
 }
