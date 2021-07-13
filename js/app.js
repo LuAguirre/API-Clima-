@@ -78,7 +78,7 @@ function mostrarClima(datos) {
 
   // Formatear el Clima...
 
-  const { name, main: { temp, temp_max, temp_min, feels_like } } = datos;
+  const { name, main: { temp, temp_max, temp_min, feels_like, pressure } } = datos;
 
 
   const grados = KelvinACentigrados(temp);
@@ -105,6 +105,8 @@ function mostrarClima(datos) {
 
   const sensacion = document.createElement('p');
   sensacion.innerHTML = `Sensación Termica: ${feelsLike} &#8451;`;
+  const presion = document.createElement('p');
+  presion.innerHTML = `Presión Atmosférica: ${pressure} hPa (Reducida al nivel del mar)`;
 
   const resultadoDiv = document.createElement('div');
   resultadoDiv.classList.add('text-center', 'text-white')
@@ -113,6 +115,7 @@ function mostrarClima(datos) {
   resultadoDiv.appendChild(tempMaxima);
   resultadoDiv.appendChild(tempMinima);
   resultadoDiv.appendChild(sensacion);
+  resultadoDiv.appendChild(presion);
 
   resultado.appendChild(resultadoDiv)
 }
